@@ -8,7 +8,7 @@
             </a>
         </li>
         <li>
-            <a>
+            <a href="{{ route('dshb.data.index') }}">
                 <x-icons.database class="w-5 h-5 stroke-current" />
                 Data Latih & Uji
             </a>

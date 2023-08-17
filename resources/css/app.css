@@ -5,3 +5,7 @@
 body {
     font-family: "Roboto", sans-serif;
 }
+
+.filepond-2-row .filepond--item {
+    @apply sm:w-filepond2;
+}

@@ -6,10 +6,14 @@ export default {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            width: {
+                filepond2: "calc(50% - 0.5em)",
+            },
+        },
     },
     plugins: [require("daisyui")],
     daisyui: {
-        themes: ["emerald"],
+        themes: ["cmyk"],
     },
 };
