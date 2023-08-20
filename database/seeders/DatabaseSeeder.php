@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Superadmin',
             'email' => 'admin@mail.com',
         ]);
+        $this->call(DataTableSeeder::class);
     }
 }

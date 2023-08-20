@@ -13,9 +13,25 @@ return new class extends Migration
     {
         Schema::create('data', function (Blueprint $table) {
             $table->id();
-            $table->string('image', 255);
+
+            $table->string('original_image', 255);
             $table->string('original_name', 255);
+
+            $table->float('contrast', 20, 15)->nullable();
+            $table->string('contrast_image', 255)->nullable();
+
+            $table->float('energy', 20, 15)->nullable();
+            $table->string('energy_image', 255)->nullable();
+
+            $table->float('correlation', 20, 15)->nullable();
+            $table->string('correlation_image', 255)->nullable();
+
+            $table->float('homogeneity', 20, 15)->nullable();
+            $table->string('homogeneity_image', 255)->nullable();
+
             $table->enum('class', ['premium', 'medium']);
+            $table->enum('type', ['train', 'test'])->default('train');
+
             $table->timestamps();
         });
     }

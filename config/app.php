@@ -160,6 +160,7 @@ return [
          * Package Service Providers...
          */
         App\Providers\FortifyServiceProvider::class,
+        Orangehill\Iseed\IseedServiceProvider::class,
         /*
          * Application Service Providers...
          */

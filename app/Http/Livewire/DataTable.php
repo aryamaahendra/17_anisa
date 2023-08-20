@@ -9,6 +9,9 @@ use Livewire\WithPagination;
 
 class DataTable extends BaseTable
 {
+    public $class = '';
+    public $type = '';
+
     public function render()
     {
         return view('livewire.data-table');
@@ -16,6 +19,12 @@ class DataTable extends BaseTable
 
     public function query(): Builder
     {
-        return Data::query();
+        return Data::query()->when(
+            $this->class != '',
+            fn (Builder $query) => $query->where('class', $this->class)
+        )->when(
+            $this->type != '',
+            fn (Builder $query) => $query->where('type', $this->type)
+        );
     }
 }

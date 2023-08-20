@@ -9,7 +9,7 @@
         </label>
     </div>
     <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <a class="btn btn-ghost normal-case text-xl lg:hidden">K-BERAS</a>
     </div>
     <div class="flex-none">
         <div class="dropdown dropdown-end">

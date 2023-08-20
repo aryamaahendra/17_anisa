@@ -16,7 +16,7 @@
     @vite(['resources/css/app.css'])
 </head>
 
-<body class="antialiased bg-base-200">
+<body class="antialiased bg-base-200 min-h-screen min-w-screen">
     @if (session()->has('flash-messages'))
         <input type="hidden" id="flash-message-error"
             value="{{ session('flash-messages')['error'] }}">
@@ -26,10 +26,10 @@
 
     <div class="drawer lg:drawer-open">
         <input id="sidebar" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content flex flex-col px-6 py-4 gap-6">
+        <div class="drawer-content w-full h-full overflow-x-hidden flex flex-col px-6 py-4 gap-6">
             @include('components.layouts.dashboard.navbar')
 
-            <main class="flex-">
+            <main class="flex-1">
                 @yield('content')
             </main>
 

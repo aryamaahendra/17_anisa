@@ -31,6 +31,21 @@ abstract class BaseTable extends Component
             })->paginate($this->perPage);
     }
 
+    public function sort($key)
+    {
+        $this->resetPage();
+
+        if ($this->sortBy === $key) {
+            $direction = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+            $this->sortDirection = $direction;
+
+            return;
+        }
+
+        $this->sortBy = $key;
+        $this->sortDirection = 'asc';
+    }
+
     public function updatingPerPage()
     {
         $this->resetPage();

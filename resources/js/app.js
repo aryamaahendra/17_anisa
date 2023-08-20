@@ -69,3 +69,34 @@ Alpine.data("dataFormImgs", () => ({
         });
     },
 }));
+
+Alpine.data("KNNDashboard", () => ({
+    init() {
+        const pond = FilePond.create(this.$refs.input, {
+            imageCropAspectRatio: "1:1",
+            imageResizeTargetWidth: 255,
+            imageResizeTargetHeight: 255,
+            imagePreviewHeight: 180,
+            server: {
+                url: `${base_url}/dashboard/knn`,
+                process: {
+                    onload: (res) => {
+                        const response = JSON.parse(res);
+                        Livewire.emitTo(
+                            "knn-dashboard",
+                            "setProcess",
+                            response.data
+                        );
+                    },
+                },
+                revert: null,
+                load: null,
+                restore: null,
+                headers: {
+                    "X-CSRF-TOKEN": csrf,
+                    Accept: "application/json",
+                },
+            },
+        });
+    },
+}));

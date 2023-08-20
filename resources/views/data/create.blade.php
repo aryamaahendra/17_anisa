@@ -32,6 +32,21 @@
                 @enderror
             </div>
 
+            <div class="form-control w-full">
+                <label class="label">
+                    <span class="label-text">Tipe</span>
+                </label>
+
+                <select class="select select-bordered" name="type">
+                    <option value="train">Data Latih</option>
+                    <option value="test">Data Uji</option>
+                </select>
+
+                @error('type')
+                    <x-form.error-message :message="$message" />
+                @enderror
+            </div>
+
             <div class="flex justify-end mt-6">
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </div>

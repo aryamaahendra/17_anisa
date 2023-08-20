@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\GLCM;
+use App\Actions\KNN;
 use App\Http\Requests\CreateData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class DataController extends Controller
 {
@@ -49,7 +53,7 @@ class DataController extends Controller
             $data = $request->route('data');
             $data->delete();
 
-            Storage::delete('public/' . $data->image);
+            Storage::delete('public/' . $data->original_image);
 
             DB::commit();
             return redirect()->route('dshb.data.index')->with(
@@ -59,5 +63,13 @@ class DataController extends Controller
             DB::rollBack();
             throw $th;
         }
+    }
+
+    public function glcm(Request $request)
+    {
+        $data = $request->route('data');
+
+        $knn = new KNN();
+        dd($knn->predict($data, 3));
     }
 }
