@@ -20,12 +20,12 @@
             </label>
             <ul tabindex="0"
                 class="menu dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-lg w-44">
-                <li>
+                {{-- <li>
                     <a>
                         <x-icons.setting class="w-5 h-5 stroke-current" />
                         Settings
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
