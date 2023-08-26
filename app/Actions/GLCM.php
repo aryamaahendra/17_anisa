@@ -33,10 +33,7 @@ class GLCM
 
         // Define the diagonal offsets
         $diagonalOffsets = [
-            [1, 1],  // Down-right
-            [-1, -1], // Up-left
-            [1, -1], // Down-left
-            [-1, 1], // Up-right
+            [1, 0],  // right
         ];
 
         // Loop through the image pixels and update the GLCM matrix
@@ -329,5 +326,23 @@ class GLCM
         $adjustedImage->save($adjustedImagePath);
 
         return $path;
+    }
+
+    function entropy($glcmMatrix)
+    {
+        // Initialize entropy to zero
+        $entropy = 0;
+
+        // Loop through the GLCM matrix
+        foreach ($glcmMatrix as $row => $rowData) {
+            foreach ($rowData as $col => $p_ij) {
+                if ($p_ij > 0) {
+                    // Calculate the entropy contribution and add it to the total entropy
+                    $entropy -= $p_ij * log($p_ij, 2);
+                }
+            }
+        }
+
+        return $entropy;
     }
 }

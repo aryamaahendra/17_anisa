@@ -43,12 +43,14 @@ class ProcessKNN implements ShouldQueue
         $energy = $glcm->energy($matrix);
         $correlation = $glcm->correlation($matrix);
         $homogeneity = $glcm->homogeneity($matrix);
+        $entropy = $glcm->entropy($matrix);
 
         // $data->matrix = json_encode($matrix);
         $data->contrast =  $contrast;
         $data->correlation =  $correlation;
         $data->energy =  $energy;
         $data->homogeneity =  $homogeneity;
+        $data->entropy =  $entropy;
 
         $data->save();
         $data->refresh();

@@ -7,6 +7,9 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\KNNController;
 use App\Http\Controllers\TestController;
 use App\Http\Middleware\ResolveWebParams;
+use App\Jobs\PreprocessImgUjiLatih as Preprocess;
+use App\Models\Data;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,4 +51,13 @@ Route::delete('upload/file', [FilepondController::class, 'revert'])
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('re-glcm', function () {
+    // calc euclidean distance between train data and new data
+    Data::chunk(20, function (Collection $datas) {
+        foreach ($datas as $data) {
+            Preprocess::dispatch($data->id);
+        }
+    });
 });

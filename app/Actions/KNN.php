@@ -66,7 +66,8 @@ class KNN
         $energy = pow($a->energy - $b->energy, 2);
         $correlation = pow($a->correlation - $b->correlation, 2);
         $homogeneity = pow($a->homogeneity - $b->homogeneity, 2);
+        $entropy = pow($a->entropy - $b->entropy, 2);
 
-        return sqrt($contrast + $energy + $correlation + $homogeneity);
+        return sqrt($contrast + $energy + $correlation + $homogeneity + $entropy);
     }
 }

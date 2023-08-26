@@ -66,9 +66,15 @@
                     ])
 
                     @include('components.table.th-shortable', [
+                        'column' => 'entropy',
+                        'label' => 'Entropy',
+                    ])
+
+                    @include('components.table.th-shortable', [
                         'column' => 'class',
                         'label' => 'Class',
                     ])
+
 
                     @include('components.table.th-shortable', [
                         'column' => 'type',
@@ -125,6 +131,15 @@
                                 <span class="loading loading-spinner loading-sm"></span>
                             @endif
                         </td>
+
+                        <td class="w-1">
+                            @if (!is_null($data->entropy))
+                                {{ number_format($data->entropy, 2, ',') }}
+                            @else
+                                <span class="loading loading-spinner loading-sm"></span>
+                            @endif
+                        </td>
+
 
                         <td class="w-1">
                             <div @class([

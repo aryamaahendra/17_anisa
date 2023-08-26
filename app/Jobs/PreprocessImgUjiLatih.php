@@ -36,29 +36,34 @@ class PreprocessImgUjiLatih implements ShouldQueue
         [$img, $matrix] = $glcm->matrix(Storage::get('public/' . $data->original_image));
 
         $contrast = $glcm->contrast($matrix);
-        $contrastPath = $glcm->adjustImgContrast(clone $img, $glcm->mapContrast($contrast));
+        // $contrastPath = $glcm->adjustImgContrast(clone $img, $glcm->mapContrast($contrast));
 
         $energy = $glcm->energy($matrix);
-        $energyPath = $glcm->adjustImgEnergy(clone $img, $glcm->mapEnergy($energy));
+        // $energyPath = $glcm->adjustImgEnergy(clone $img, $glcm->mapEnergy($energy));
 
         $correlation = $glcm->correlation($matrix);
-        $correlationPath = $glcm->adjustImgCorrelation(clone $img, $correlation);
+        // $correlationPath = $glcm->adjustImgCorrelation(clone $img, $correlation);
 
         $homogeneity = $glcm->homogeneity($matrix);
-        $homogeneityPath = $glcm->adjustImgHomogeneity(clone $img, $glcm->mapHomogeneity($homogeneity));
+        // $homogeneityPath = $glcm->adjustImgHomogeneity(clone $img, $glcm->mapHomogeneity($homogeneity));
+
+        $entropy = $glcm->entropy($matrix);
 
         // $data->matrix = json_encode($matrix);
         $data->contrast =  $contrast;
-        $data->contrast_image =  $contrastPath;
+        $data->contrast_image =  '/';
 
         $data->correlation =  $correlation;
-        $data->correlation_image =  $correlationPath;
+        $data->correlation_image =  '/';
 
         $data->energy =  $energy;
-        $data->energy_image =  $energyPath;
+        $data->energy_image =  '/';
 
         $data->homogeneity =  $homogeneity;
-        $data->homogeneity_image =  $homogeneityPath;
+        $data->homogeneity_image =  '/';
+
+        $data->entropy =  $entropy;
+        $data->entropy_image =  '/';
 
         $data->save();
     }
