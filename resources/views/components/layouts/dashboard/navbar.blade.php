@@ -9,7 +9,9 @@
         </label>
     </div>
     <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl lg:hidden">K-BERAS</a>
+        <a class="btn btn-ghost normal-case text-xl lg:hidden">
+            <img src="{{ asset('logo.png') }}" class="w-full h-full" alt="logo">
+        </a>
     </div>
     <div class="flex-none">
         <div class="dropdown dropdown-end">

@@ -49,9 +49,8 @@ Route::post('upload/file', [FilepondController::class, 'process'])
 Route::delete('upload/file', [FilepondController::class, 'revert'])
     ->name('upload.revert');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/about', fn () => view('about'))->name('landing.about');
+Route::get('/', fn () => view('welcome'))->name('landing.index');
 
 Route::get('re-glcm', function () {
     // calc euclidean distance between train data and new data

@@ -2,7 +2,7 @@
     <label for="sidebar" class="drawer-overlay"></label>
     <div class="bg-base-100 pt-4 flex items-center px-8">
         <div class="flex items-center py-2 h-16 w-full font-semibold normal-case text-2xl">
-            <div class="">K-BERAS</div>
+            <img src="{{ asset('logo.png') }}" class="w-full h-full object-contain" alt="logo">
         </div>
     </div>
 

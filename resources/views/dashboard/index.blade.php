@@ -39,34 +39,49 @@
         </div>
     </div>
 
-    <div class="grid max-w-4xl mx-auto grid-cols-2 gap-6">
-        <div class="card bg-base-100 shadow-xl">
-            <figure class="max-w-full max-h-72">
-                <img class="w-full h-full object-cover" src="{{ asset('BP1.jpg') }}" alt="Shoes" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Beras Premium</h2>
-                <p>
-                    Beras premium adalah beras berkualitas tinggi yang dikenal karena rasanya yang
-                    sangat baik, teksturnya yang bagus, dan penampilannya yang menarik. Beras ini
-                    ditanam dengan metode yang hati-hati, sehingga menjadi pilihan yang dicari untuk
-                    acara istimewa dan makan mewah.
-                </p>
+    <div class="grid mx-auto grid-cols-2">
+        <div class="flex justify-center">
+            <div class="card bg-base-100 shadow-xl max-w-md">
+                <figure class="max-w-full max-h-72">
+                    <img class="w-full h-full object-cover" src="{{ asset('beras-premium.jpg') }}"
+                        alt="Shoes" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">Beras Premium</h2>
+                    <p>
+                        Beras premium tidak boleh memiliki kadar butir gabah sama sekali, benda lain
+                        atau
+                        benda asing. Benda asing adalah benda-benda selain butiran beras yang terdapat
+                        dalam
+                        beras seperti butiran batu kecil atau kerikil, sekam atau benda lainnya. Benda
+                        asing
+                        menunjukkan tingkat pencemaran beras atau tidak bersihnya proses pengolahan
+                        beras.
+                        Beras tidak boleh tercampur benda asing sama sekali alias 0%. Beras premium
+                        memiliki
+                        kualitas lebih tinggi dengan derajat sosoh minimal 95%, kadar air maksimal 14%
+                        dan
+                        butir patah maksimal 15%.
+                    </p>
+                </div>
             </div>
         </div>
 
-        <div class="card bg-base-100 shadow-xl">
-            <figure class="max-w-full max-h-72">
-                <img class="w-full h-full object-cover" src="{{ asset('BM1.jpg') }}" alt="Shoes" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Beras Medium</h2>
-                <p>
-                    Beras medium adalah varietas beras dengan kualitas di antara beras premium. Dengan
-                    butiran lebih seragam dan lebih sedikit biji pecah, beras medium memiliki rasa dan
-                    tekstur yang baik dengan harga yang lebih terjangkau. Cocok untuk masakan
-                    sehari-hari.
-                </p>
+        <div class="flex justify-center">
+            <div class="card bg-base-100 shadow-xl max-w-md">
+                <figure class="max-w-full max-h-72">
+                    <img class="w-full h-full object-cover" src="{{ asset('beras-medium.jpg') }}"
+                        alt="Shoes" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">Beras Medium</h2>
+                    <p>
+                        Beras medium kadar butir gabahnya adalah maksimal 1 butir/100 gram dan boleh
+                        memiliki kadar benda lain maksimal 0,05 persen. Beras medium memiliki
+                        spesifikasi
+                        derajat sosoh minimal 95%, kadar air maksimal 14% dan butir patah maksimal 25%
+                    </p>
+                </div>
             </div>
         </div>
     </div>
