@@ -43,8 +43,13 @@
                     ])
 
                     @include('components.table.th-shortable', [
-                        'column' => 'akurasi',
-                        'label' => 'Akurasi',
+                        'column' => 'true',
+                        'label' => 'Benar',
+                    ])
+
+                    @include('components.table.th-shortable', [
+                        'column' => 'false',
+                        'label' => 'Salah',
                     ])
 
                     @include('components.table.th-shortable', [
@@ -69,6 +74,14 @@
 
                         <td class="w-1">
                             {{ $data->k }}
+                        </td>
+
+                        <td class="w-1">
+                            {{ $data->true ?? 0 }}
+                        </td>
+
+                        <td class="w-1">
+                            {{ $data->false ?? 0 }}
                         </td>
 
                         <td class="w-1">

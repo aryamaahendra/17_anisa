@@ -12,7 +12,7 @@
 
                 <input x-ref="input" type="file" name="imgs[]" multiple>
 
-                @error('class')
+                @error('imgs.*')
                     <x-form.error-message :message="$message" />
                 @enderror
             </div>

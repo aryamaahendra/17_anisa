@@ -63,6 +63,8 @@ class ProcessTest implements ShouldQueue
         $testing = Testing::find($this->testID);
         $testing->akurasi = number_format($accuracy, 2);
         $testing->time = $executionTime;
+        $testing->true = $true;
+        $testing->false = $false;
         $testing->save();
     }
 }
