@@ -53,6 +53,11 @@
                     ])
 
                     @include('components.table.th-shortable', [
+                        'column' => 'akurasi',
+                        'label' => 'Akurasi',
+                    ])
+
+                    @include('components.table.th-shortable', [
                         'column' => 'time',
                         'label' => 'Waktu',
                     ])
