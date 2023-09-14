@@ -25,8 +25,8 @@
                 <x-icons.percentage class="inline-block w-8 h-8 stroke-current" />
             </div>
             <div class="stat-title">Akurasi</div>
-            <div class="stat-value text-success">{{ $test->akurasi * 100 }}</div>
-            <div class="stat-desc">highest accuracy with K = {{ $test->k }}</div>
+            <div class="stat-value text-success">{{ $test?->akurasi ?? 0 * 100 }}</div>
+            <div class="stat-desc">highest accuracy with K = {{ $test?->k ?? 0 }}</div>
         </div>
 
         <div class="stat">

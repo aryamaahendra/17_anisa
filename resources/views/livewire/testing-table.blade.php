@@ -13,12 +13,12 @@
             <form action="{{ route('dshb.test.process') }}" method="POST" class="join">
                 @csrf
 
-                <input name="k" value="{{ old('k') }}"
-                    class="input input-bordered join-item max-w-[150px]" placeholder="Nilai K" />
+                <input type="number" name="knn" value="{{ old('knn') ?? 9 }}"
+                    class="input input-bordered join-item max-w-[150px]" placeholder="Nilai KNN" />
 
-                @error('k')
-                    <x-form.error-message :message="$message" />
-                @enderror
+                <input type="number" name="kfold" value="{{ old('kfold') ?? 5 }}"
+                    class="input input-bordered join-item max-w-[150px]"
+                    placeholder="Nilai KFold" />
 
                 <button type="submit" class="btn btn-primary join-item rounded-r-full">
                     Proces
@@ -38,18 +38,13 @@
                 <tr>
                     <th class="pl-6">Code</th>
                     @include('components.table.th-shortable', [
-                        'column' => 'k',
+                        'column' => 'KNN',
                         'label' => 'Nilai K',
                     ])
 
                     @include('components.table.th-shortable', [
-                        'column' => 'true',
-                        'label' => 'Benar',
-                    ])
-
-                    @include('components.table.th-shortable', [
-                        'column' => 'false',
-                        'label' => 'Salah',
+                        'column' => 'kfold',
+                        'label' => 'KFold',
                     ])
 
                     @include('components.table.th-shortable', [
@@ -82,11 +77,7 @@
                         </td>
 
                         <td class="w-1">
-                            {{ $data->true ?? 0 }}
-                        </td>
-
-                        <td class="w-1">
-                            {{ $data->false ?? 0 }}
+                            {{ $data->kfold ?? 0 }}
                         </td>
 
                         <td class="w-1">

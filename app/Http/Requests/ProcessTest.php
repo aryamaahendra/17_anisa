@@ -26,7 +26,8 @@ class ProcessTest extends FormRequest implements Fulfillable
     public function rules(): array
     {
         return [
-            'k' => ['required', 'numeric', 'min:1']
+            'knn' => ['required', 'numeric', 'min:1'],
+            'kfold' => ['required', 'numeric', 'min:1'],
         ];
     }
 
@@ -37,12 +38,13 @@ class ProcessTest extends FormRequest implements Fulfillable
 
             $model = new Testing();
             $model->uuid = Str::orderedUuid();
-            $model->k = $this->validated('k');
+            $model->k = $this->validated('knn');
+            $model->kfold = $this->validated('kfold');
             $model->save();
 
             DB::commit();
 
-            JobsProcessTest::dispatch($model->id, $this->validated('k'));
+            JobsProcessTest::dispatch($model->id, $this->validated('knn'), $this->validated('kfold'));
 
             return true;
         } catch (\Throwable $th) {

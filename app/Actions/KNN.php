@@ -3,16 +3,20 @@
 namespace App\Actions;
 
 use App\Models\Data;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
 class KNN
 {
-    public function predict(object $newData, int $k): string
+    public function predict(object $newData, int $k, ?array $traindIDs = null): string
     {
         $result = [];
 
         // calc euclidean distance between train data and new data
-        Data::where('type', 'train')->chunk(10, function (Collection $datas) use (&$result, $newData) {
+        Data::when(
+            $traindIDs,
+            fn (Builder $query) => $query->whereIn('id', $traindIDs)
+        )->chunk(10, function (Collection $datas) use (&$result, $newData) {
             foreach ($datas as $data) {
                 array_push($result, [
                     'id' => $data->id,
