@@ -33,6 +33,7 @@ Route::group([
 
     Route::get('test', [TestController::class, 'index'])->name('test.index');
     Route::post('test', [TestController::class, 'process'])->name('test.process');
+    Route::get('test/{test}', [TestController::class, 'show'])->name('test.show');
 
     Route::get('knn', [KNNController::class, 'index'])->name('knn.index');
 

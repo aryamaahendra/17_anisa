@@ -101,22 +101,32 @@
                         </td>
 
                         <td class="pr-6 w-1">
-                            @if ($data->isSet)
-                                <div class="tooltip tooltip-left" data-tip="Current K">
-                                    <button type="button"
-                                        class="btn btn-square btn-sm btn-ghost text-success">
-                                        <x-icons.circle-check-filled
-                                            class="w-5 h-5 stroke-current" />
-                                    </button>
-                                </div>
-                            @else
-                                <div class="tooltip tooltip-left" data-tip="Set as K">
-                                    <button type="button" wire:click="setAsK({{ $data->id }})"
+                            <div class="flex items-center">
+                                <div class="tooltip tooltip-left" data-tip="Detail">
+                                    <a href="{{ route('dshb.test.show', ['test' => $data->id]) }}"
                                         class="btn btn-square btn-sm btn-ghost">
-                                        <x-icons.circle-check class="w-5 h-5 stroke-current" />
-                                    </button>
+                                        <x-icons.eye class="w-5 h-5 stroke-current" />
+                                    </a>
                                 </div>
-                            @endif
+
+                                @if ($data->isSet)
+                                    <div class="tooltip tooltip-left" data-tip="Current K">
+                                        <button type="button"
+                                            class="btn btn-square btn-sm btn-ghost text-success">
+                                            <x-icons.circle-check-filled
+                                                class="w-5 h-5 stroke-current" />
+                                        </button>
+                                    </div>
+                                @else
+                                    <div class="tooltip tooltip-left" data-tip="Set as K">
+                                        <button type="button"
+                                            wire:click="setAsK({{ $data->id }})"
+                                            class="btn btn-square btn-sm btn-ghost">
+                                            <x-icons.circle-check class="w-5 h-5 stroke-current" />
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
                         </td>
                     </tr>
                 @empty

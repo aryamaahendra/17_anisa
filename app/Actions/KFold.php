@@ -19,7 +19,7 @@ class KFold
     {
         $K = $this->KFold;
         $IDs = Data::select(['id'])->get()->pluck('id')->toArray();
-        Arr::shuffle($IDs);
+        $IDs = Arr::shuffle($IDs);
 
         $result = [];
 

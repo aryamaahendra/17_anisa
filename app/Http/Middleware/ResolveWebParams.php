@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Data;
+use App\Models\Testing;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -23,6 +24,12 @@ class ResolveWebParams
             $modal = Data::findOrFail($parameters['data']);
 
             $request->route()->setParameter('data', $modal);
+        }
+
+        if (Arr::has($parameters, 'test')) {
+            $modal = Testing::findOrFail($parameters['test']);
+
+            $request->route()->setParameter('test', $modal);
         }
 
         return $next($request);

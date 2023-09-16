@@ -23,4 +23,9 @@ class TestController extends Controller
             $this->FlashMessage(false, 'Pengujian telah ditambahkan di antrian')
         );
     }
+
+    function show(Request $request): View
+    {
+        return view('test.show', ['test' => $request->route('test')]);
+    }
 }
