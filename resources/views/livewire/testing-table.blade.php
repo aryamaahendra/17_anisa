@@ -43,13 +43,25 @@
                     ])
 
                     @include('components.table.th-shortable', [
+                        'column' => 'true',
+                        'label' => 'Benar',
+                    ])
+
+                    @include('components.table.th-shortable', [
+                        'column' => 'false',
+                        'label' => 'Salah',
+                    ])
+
+                    <th class="pr-6">Akurasi</th>
+
+                    @include('components.table.th-shortable', [
                         'column' => 'kfold',
                         'label' => 'KFold',
                     ])
 
                     @include('components.table.th-shortable', [
                         'column' => 'akurasi',
-                        'label' => 'Akurasi',
+                        'label' => 'Akurasi KFold',
                     ])
 
                     @include('components.table.th-shortable', [
@@ -74,6 +86,22 @@
 
                         <td class="w-1">
                             {{ $data->k }}
+                        </td>
+
+                        <td class="w-1">
+                            {{ $data->true }}
+                        </td>
+
+                        <td class="w-1">
+                            {{ $data->false }}
+                        </td>
+
+                        <td class="w-1">
+                            @if ((int) $data->true <= 0 || (int) $data->false <= 0)
+                                0
+                            @else
+                                {{ number_format((int) $data->true / ((int) $data->true + (int) $data->false), 3) * 100 }}%
+                            @endif
                         </td>
 
                         <td class="w-1">

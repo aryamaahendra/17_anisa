@@ -37,6 +37,28 @@ class ProcessTest implements ShouldQueue
     {
         $start = microtime(true);
 
+        $true = 0;
+        $false = 0;
+        $k = $this->knn;
+
+        Data::where('type', 'test')->chunk(
+            10,
+            function (Collection $datas) use (&$true, &$false, $k) {
+                $knn = new KNN();
+                $IDs = Data::select(['id'])->where('type', 'train')->get()->pluck('id')->toArray();
+
+                foreach ($datas as $data) {
+                    $predicted = $knn->predict($data, $k, $IDs);
+
+                    if ($data->class == $predicted) {
+                        $true++;
+                    } else {
+                        $false++;
+                    }
+                }
+            }
+        );
+
         $kFold = new KFold($this->kfold, $this->knn);
         $result = $kFold->process();
 
@@ -49,8 +71,8 @@ class ProcessTest implements ShouldQueue
         $testing = Testing::find($this->testID);
         $testing->akurasi = number_format($result['accuracy'], 2);
         $testing->time = $executionTime;
-        $testing->true = 0;
-        $testing->false = 0;
+        $testing->true = $true;
+        $testing->false = $false;
         $testing->kfold_data = json_encode($result);
         $testing->save();
     }
