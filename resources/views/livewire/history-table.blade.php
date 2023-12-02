@@ -128,13 +128,14 @@
                             @endif
                         </td>
 
-                        <td class="w-1">
+                        <td class="w-1 whitespace-nowrap">
                             <div @class([
                                 'badge rounded capitalize',
                                 'badge-primary' => $data->class == 'premium',
                                 'badge-secondary' => $data->class == 'medium',
                             ])>
                                 {{ $data->class }}
+                                {{ number_format(((int) $data->count / (int) $data->k) * 100, 2) }}%
                             </div>
                         </td>
 

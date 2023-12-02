@@ -103,7 +103,7 @@ class KFold
                 $knn = new KNN();
 
                 foreach ($datas as $data) {
-                    $predicted = $knn->predict($data, $K, $trainIDs);
+                    [$predicted, $count] = $knn->predict($data, $K, $trainIDs);
                     array_push($origin, $data->class);
                     array_push($predict, $predicted);
                 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Actions\GLCM;
+use App\Actions\KNN;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\FilepondController;
@@ -9,8 +11,10 @@ use App\Http\Controllers\TestController;
 use App\Http\Middleware\ResolveWebParams;
 use App\Jobs\PreprocessImgUjiLatih as Preprocess;
 use App\Models\Data;
+use App\Models\History;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +54,7 @@ Route::post('upload/file', [FilepondController::class, 'process'])
 Route::delete('upload/file', [FilepondController::class, 'revert'])
     ->name('upload.revert');
 
+Route::get('/jenis-beras', fn () => view('jenis-beras'))->name('landing.jenis_beras');
 Route::get('/about', fn () => view('about'))->name('landing.about');
 Route::get('/', fn () => view('welcome'))->name('landing.index');
 

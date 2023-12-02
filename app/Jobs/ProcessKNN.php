@@ -56,9 +56,10 @@ class ProcessKNN implements ShouldQueue
         $data->refresh();
 
         $knn = new KNN();
-        $predited = $knn->predict($data, (int) $data->k);
+        [$predited, $count] = $knn->predict($data, (int) $data->k);
 
         $data->class = $predited;
+        $data->count = $count;
         $data->save();
     }
 }

@@ -48,7 +48,7 @@ class ProcessTest implements ShouldQueue
                 $IDs = Data::select(['id'])->where('type', 'train')->get()->pluck('id')->toArray();
 
                 foreach ($datas as $data) {
-                    $predicted = $knn->predict($data, $k, $IDs);
+                    [$predicted, $count] = $knn->predict($data, $k, $IDs);
 
                     if ($data->class == $predicted) {
                         $true++;

@@ -34,6 +34,7 @@
             <div class="flex-none">
                 <ul class="menu menu-horizontal space-x-1 px-1">
                     <li><a href="{{ route('landing.index') }}">Home</a></li>
+                    <li><a href="{{ route('landing.jenis_beras') }}">Jenis Beras</a></li>
                     <li><a href="{{ route('landing.about') }}">About</a></li>
                     <li>
                         <a href="{{ route('login') }}"

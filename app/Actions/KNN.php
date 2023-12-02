@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class KNN
 {
-    public function predict(object $newData, int $k, ?array $traindIDs = null): string
+    public function predict(object $newData, int $k, ?array $traindIDs = null): array
     {
         $result = [];
 
@@ -39,7 +39,7 @@ class KNN
     /**
      * find class appears the most
      */
-    protected function findClass(array $data): string
+    protected function findClass(array $data): array
     {
         $classCounts = [];
 
@@ -53,8 +53,9 @@ class KNN
         }
 
         arsort($classCounts); // Sort the class counts in descending order
+        $class = array_key_first($classCounts);
 
-        return key($classCounts); // Get the key of the first element (most frequent class)
+        return [$class, $classCounts[$class]]; // Get the key of the first element (most frequent class)
     }
 
     /**
