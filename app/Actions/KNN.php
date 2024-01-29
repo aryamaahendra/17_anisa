@@ -5,12 +5,16 @@ namespace App\Actions;
 use App\Models\Data;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Log;
 
 class KNN
 {
     public function predict(object $newData, int $k, ?array $traindIDs = null): array
     {
         $result = [];
+
+        Log::error('new data ==============');
+        Log::error($newData);
 
         // calc euclidean distance between train data and new data
         Data::when(
@@ -32,6 +36,10 @@ class KNN
             return ($a['distance'] < $b['distance']) ? -1 : 1;
         });
 
+
+        Log::error('Hasil');
+        Log::error(array_slice($result, 0, $k));
+        Log::error('End Process ====================');
         // Get n / $k distance terkecil and find class appears the most
         return $this->findClass(array_slice($result, 0, $k));
     }
